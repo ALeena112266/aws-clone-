@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Sign In</title>
+    <link rel="stylesheet" href="css/signin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="signin-container">
+        <header>
+            <div class="header-options">
+                <div class="option">New sign in ▼</div>
+                <div class="option">Multi-session disabled ▼</div>
+                <div class="option">English ▼</div>
+            </div>
+        </header>
+
+        <main>
+            <div class="logo">
+                <img src="images/aws-logo@2x.7c50e6f9.png" alt="AWS Logo">
+            </div>
+
+            <div class="signin-content">
+                <div class="signin-form">
+                    <div class="form-header">
+                        <h1>IAM user sign in</h1>
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+
+                    <form>
+                        <div class="form-group">
+                            <label>Account ID or alias <a href="#" class="help-link">(Don't have?)</a></label>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox"> Remember this account
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>IAM username</label>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" required>
+                            <div class="password-options">
+                                <label><input type="checkbox"> Show Password</label>
+                                <a href="#" class="help-link">Having trouble?</a>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="signin-button">Sign in</button>
+                    </form>
+
+                    <div class="alternative-signin">
+                        <button class="root-user-signin">Sign in using root user email</button>
+                    </div>
+                </div>
+
+             
+                   
+                    <div class="promo-image">
+                        <img src="images/IAM_Fallback_Lightsail_Sign-in_EN.1aca34313e75d969756dd0a514a39394735099ab.png" alt="Lightsail Robot">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
