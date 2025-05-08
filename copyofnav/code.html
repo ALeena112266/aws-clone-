@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Free Tier</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="left-nav">
+            <div class="aws-logo">
+                <img src="images/aws-logo@2x.7c50e6f9.png" alt="AWS Logo">
+            </div>
+            <div class="amazon-badge">
+                Amazon <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <!-- In your top navigation bar, add this link -->
+        <div class="right-nav">
+            <div class="about">About AWS</div>
+            <div class="contact">Contact Us</div>
+            <div class="support">
+                Support <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="language">
+                English <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="account">
+                My Account <i class="fa fa-caret-down"></i>
+            </div>
+            <a href="signin.html" class="sign-in">Sign In</a>
+            <div class="create-account-btn">
+                <button>Create an AWS Account</button>
+            </div>
+            <div class="user-icon">
+                <i class="fa fa-user-circle"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li class="products">Products</li>
+            <li class="solutions">Solutions</li>
+            <li class="pricing">Pricing</li>
+            <li class="documentation">Documentation</li>
+            <li class="learn">Learn</li>
+            <li class="partner">Partner Network</li>
+            <li class="marketplace">AWS Marketplace</li>
+            <li class="customer">Customer Enablement</li>
+            <li class="events">Events</li>
+            <li class="explore">Explore More</li>
+            <li class="search"><i class="fa fa-search"></i></li>
+        </ul>
+    </nav>
+
+    <!-- Secondary Navigation -->
+    <nav class="secondary-nav">
+        <div class="aws-free-tier">AWS Free Tier</div>
+        <ul>
+            <li class="active">Overview</li>
+            <li>Free Tier Categories <i class="fa fa-caret-down"></i></li>
+            <li>How to Create an Account</li>
+            <li>Featured Offers for Business <i class="fa fa-caret-down"></i></li>
+            <li>FAQs</li>
+            <li>Terms and Conditions</li>
+        </ul>
+    </nav>
+<!--css--> 
+
+
+/* Top Navigation Bar */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #232f3e; /*#232f3e;*/
+    padding: 10px 20px;
+    height: 60px;
+}
+
+.left-nav, .right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.aws-logo img {
+    height: 30px;
+    margin-right: 15px;
+}
+
+.amazon-badge {
+    background-color: #ff9900;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.amazon-badge i {
+    margin-left: 5px;
+}
+
+.right-nav > div {
+    margin-left: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.right-nav i {
+    margin-left: 5px;
+}
+
+.create-account-btn button {
+    background-color: #ff9900;
+    color: black;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 2px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.user-icon {
+    font-size: 24px;
+}
+
+/* Main Navigation */
+.main-nav {
+    background-color: #232f3e;
+    border-top: 1px solid #3a4553;
+    padding: 0 20px;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    height: 40px;
+}
+
+.main-nav li {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.main-nav li:hover {
+    color: #ff9900;
+}
+
+.search {
+    margin-left: auto;
+    font-size: 18px;
+}
+
+/* Secondary Navigation */
+.secondary-nav {
+    background-color: white;
+    color: #333;
+    display: flex;
+    padding: 0 20px;
+    height: 40px;
+    position: sticky;
+    align-items: center;
+}
