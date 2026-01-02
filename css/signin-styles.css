@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f2f3f3;
+    background-color: #f3f3f3;
 }
 
 .signin-container {
@@ -299,4 +299,5 @@ input[type="password"] {
         width: 100%;
         max-width: 400px;
     }
+
 }
