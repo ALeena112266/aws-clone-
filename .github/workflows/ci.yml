@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'  # Set up Java 11
-        distribution: 'adoptopenjdk'  # You can change this to your preferred distribution (e.g., 'zulu', 'adoptopenjdk')
+        distribution: 'temurin'  # Use the 'temurin' distribution (replaces 'adoptopenjdk')
 
     - name: Install Dependencies
       run: |
