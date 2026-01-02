@@ -1,34 +1,52 @@
-name: CI for HTML and CSS
+name: CI for HTML, CSS, and Performance
 
 on:
   push:
     branches:
-      - main
+      - main  # Runs when you push to the main branch
   pull_request:
     branches:
-      - main
+      - main  # Runs for pull requests targeting the main branch
 
 jobs:
   lint:
-    runs-on: ubuntu-latest  # Use Ubuntu as the OS for GitHub Actions
+    runs-on: ubuntu-latest  # GitHub Actions runner for Ubuntu
     
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Checkout your repository code
         
       - name: Set Up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Use the latest stable version of Node.js (you can use the latest version)
+          node-version: '16'  # Set up Node.js for the workflow
 
-      - name: Install HTMLHint
-        run: npm install -g htmlhint  # Install HTMLHint globally
-      
+      - name: Install HTMLHint and Stylelint
+        run: |
+          npm install -g htmlhint stylelint  # Install linters globally
+
       - name: Run HTMLHint on HTML Files
-        run: htmlhint '**/*.html'  # Lint all the HTML files in the repository
-
-      - name: Install Stylelint
-        run: npm install -g stylelint  # Install Stylelint globally
+        run: htmlhint '**/*.html'  # Lint all HTML files in the repository
 
       - name: Run Stylelint on CSS Files
-        run: stylelint '**/*.css'  # Lint all the CSS files in the repository
+        run: stylelint '**/*.css'  # Lint all CSS files in the repository
+
+  performance:
+    runs-on: ubuntu-latest  # Runs this job on an Ubuntu runner
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2  # Checkout repository code
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Set up Node.js for Lighthouse CI
+
+      - name: Install Lighthouse CI
+        run: |
+          npm install -g @lhci/cli  # Install Lighthouse CI tool globally
+
+      - name: Run Lighthouse Performance Tests
+        run: |
+          lhci autorun --url=https://your-deployment-url.com  # Replace with your app URL
