@@ -1,48 +1,41 @@
 name: CI/CD Workflow
 
-# This workflow will run on any push to the repository
+# This workflow runs on pushes to the 'main' branch
 on:
   push:
     branches:
-      - main  # This means it will run only on pushes to the main branch
+      - main
 
 jobs:
   build:
-    runs-on: windows-latest  # We'll use Windows for this job
+    runs-on: windows-latest  # Runs on a Windows environment
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2  # This step gets your code
+    - name: Checkout Code
+      uses: actions/checkout@v2  # Get your code from GitHub
 
-    - name: Set up JDK
+    - name: Set Up Java
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # Set up Java 11, like we did with Jenkins
+        java-version: '11'  # Set up Java 11
+        distribution: 'adoptopenjdk'  # You can change this to your preferred distribution (e.g., 'zulu', 'adoptopenjdk')
 
-    - name: Install dependencies
+    - name: Install Dependencies
       run: |
-        # Here, we can run commands like 'npm install' or any other dependency manager
+        # Commands to install dependencies go here
         echo "Installing dependencies..."
-        # Example for Node.js:
-        # npm install
 
     - name: Run Tests
       run: |
-        # Now we can run our tests automatically!
+        # Run your tests automatically
         echo "Running tests..."
-        # Example for Node.js testing:
-        # npm test
 
-    - name: Build the app
+    - name: Build App
       run: |
-        # Run your build steps here. It could be a build command or compiling code.
+        # Commands to build your app
         echo "Building the app..."
-        # Example for Node.js:
-        # npm run build
 
     - name: Deploy
       run: |
-        # You can deploy your app here, maybe to Azure or somewhere else
+        # Deploy your app (this is where you deploy it to a server or platform)
         echo "Deploying the app..."
-        # Example:
-        # npm run deploy
