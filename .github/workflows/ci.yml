@@ -24,6 +24,7 @@ jobs:
       - name: Install HTMLHint and Stylelint
         run: |
           npm install -g htmlhint stylelint  # Install linters globally
+          npm install  # Install project dependencies if needed
 
       - name: Run HTMLHint on HTML Files
         run: htmlhint '**/*.html'  # Lint all HTML files in the repository
@@ -47,6 +48,11 @@ jobs:
         run: |
           npm install -g @lhci/cli  # Install Lighthouse CI tool globally
 
+      - name: Wait for Deployment to be Ready (Optional)
+        run: |
+          echo "Waiting for deployment to be fully ready..."
+          sleep 30  # Wait for 30 seconds to ensure your website is ready
+
       - name: Run Lighthouse Performance Tests
         run: |
-          lhci autorun --url=https://your-deployment-url.com  # Replace with your app URL
+          lhci autorun --url=https://your-deployment-url.com  # Replace with your live/staging site URL
