@@ -13,43 +13,45 @@ jobs:
     runs-on: ubuntu-latest  # GitHub Actions runner for Ubuntu
     
     steps:
-      # Step 1: Checkout code from the repository
       - name: Checkout Code
         uses: actions/checkout@v2  # Checkout repository code
 
-      # Step 2: Set up Node.js environment
       - name: Set Up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'  # Use Node.js version 16
 
-      # Step 3: Install all project dependencies from package.json
       - name: Install Project Dependencies
         run: |
           npm install  # Install dependencies, including htmlhint and stylelint
 
-      # Step 4: Verify the installation of htmlhint and stylelint
+      - name: Install htmlhint and stylelint globally
+        run: |
+          npm install -g htmlhint stylelint  # Install htmlhint and stylelint globally
+
+      # Step 1: Verify installation of htmlhint and stylelint
       - name: Verify htmlhint and stylelint installation
         run: |
-          npm list htmlhint  # Verify htmlhint is installed
-          npm list stylelint  # Verify stylelint is installed
-          ls -la node_modules  # List contents of node_modules folder for verification
+          npm list -g htmlhint  # Check if htmlhint is installed globally
+          npm list -g stylelint  # Check if stylelint is installed globally
+          which htmlhint  # Verify that htmlhint is globally available
+          which stylelint  # Verify that stylelint is globally available
 
-      # Step 5: Show project directory for debugging
+      # Step 2: Show project directory for debugging
       - name: Show Project Directory for Debugging
         run: |
           echo "Current project directory:"
           pwd
           echo "Listing files in the repository:"
-          ls -la  # List all files and directories to confirm the paths
+          ls -la  # List all files and directories to confirm paths
 
-      # Step 6: Run HTMLHint on all HTML files in the root directory
+      # Step 3: Run HTMLHint on all HTML files in the root directory
       - name: Run HTMLHint on HTML Files
         run: |
           echo "Running HTMLHint on HTML files..."
           htmlhint '*.html' -v  # Lint all HTML files with verbose output
 
-      # Step 7: Run Stylelint on all CSS files in the 'css' folder
+      # Step 4: Run Stylelint on all CSS files in the 'css' folder
       - name: Run Stylelint on CSS Files
         run: |
           echo "Running Stylelint on CSS files..."
@@ -59,28 +61,23 @@ jobs:
     runs-on: ubuntu-latest  # Runs the performance job on Ubuntu
     
     steps:
-      # Step 8: Checkout code
       - name: Checkout Code
         uses: actions/checkout@v2  # Checkout repository code
 
-      # Step 9: Set up Node.js environment for Lighthouse CI
       - name: Set Up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'  # Use Node.js version 16 for Lighthouse CI
 
-      # Step 10: Install Lighthouse CI globally
       - name: Install Lighthouse CI
         run: |
           npm install -g @lhci/cli  # Install Lighthouse CI tool globally
 
-      # Step 11: Wait for the website to be deployed (optional)
-      - name: Wait for Deployment to be Ready
+      - name: Wait for Deployment to be Ready (Optional)
         run: |
           echo "Waiting for deployment to be fully ready..."
           sleep 30  # Wait for 30 seconds to ensure the website is fully deployed
 
-      # Step 12: Run Lighthouse performance tests
       - name: Run Lighthouse Performance Tests
         run: |
           lhci autorun --url=https://your-deployment-url.com || exit 0  # Replace with your live/staging site URL
