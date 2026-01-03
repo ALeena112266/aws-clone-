@@ -29,7 +29,10 @@ jobs:
         run: |
           npm install -g htmlhint stylelint  # Install htmlhint and stylelint globally
 
-      # Step 1: Verify installation of htmlhint and stylelint
+      - name: Add Global Packages to PATH
+        run: |
+          echo "/opt/hostedtoolcache/node/16.20.2/x64/bin" >> $GITHUB_PATH  # Add global binaries to PATH
+
       - name: Verify htmlhint and stylelint installation
         run: |
           npm list -g htmlhint  # Check if htmlhint is installed globally
@@ -37,7 +40,6 @@ jobs:
           which htmlhint  # Verify that htmlhint is globally available
           which stylelint  # Verify that stylelint is globally available
 
-      # Step 2: Show project directory for debugging
       - name: Show Project Directory for Debugging
         run: |
           echo "Current project directory:"
@@ -45,17 +47,15 @@ jobs:
           echo "Listing files in the repository:"
           ls -la  # List all files and directories to confirm paths
 
-      # Step 3: Run HTMLHint on all HTML files in the root directory
       - name: Run HTMLHint on HTML Files
         run: |
           echo "Running HTMLHint on HTML files..."
-          htmlhint '*.html' -verbose  # Lint all HTML files with verbose output
+          htmlhint '*.html' --verbose  # Corrected: Lint all HTML files with verbose output
 
-      # Step 4: Run Stylelint on all CSS files in the 'css' folder
       - name: Run Stylelint on CSS Files
         run: |
           echo "Running Stylelint on CSS files..."
-          stylelint 'css/**/*.css' -verbose  # Lint all CSS files inside the 'css' folder
+          stylelint 'css/**/*.css' -v  # Lint all CSS files inside the 'css' folder
 
   performance:
     runs-on: ubuntu-latest  # Runs the performance job on Ubuntu
