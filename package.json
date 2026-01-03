@@ -1,6 +1,13 @@
 {
   "name": "aws-clone",
   "version": "1.0.0",
+  "description": "Your project description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "htmlhint": "^0.14.0",
     "stylelint": "^13.13.1",
