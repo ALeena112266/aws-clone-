@@ -49,13 +49,13 @@ jobs:
       - name: Run HTMLHint on HTML Files
         run: |
           echo "Running HTMLHint on HTML files..."
-          htmlhint '*.html' -v  # Lint all HTML files with verbose output
+          htmlhint '*.html' -verbose  # Lint all HTML files with verbose output
 
       # Step 4: Run Stylelint on all CSS files in the 'css' folder
       - name: Run Stylelint on CSS Files
         run: |
           echo "Running Stylelint on CSS files..."
-          stylelint 'css/**/*.css' -v  # Lint all CSS files inside the 'css' folder
+          stylelint 'css/**/*.css' -verbose  # Lint all CSS files inside the 'css' folder
 
   performance:
     runs-on: ubuntu-latest  # Runs the performance job on Ubuntu
