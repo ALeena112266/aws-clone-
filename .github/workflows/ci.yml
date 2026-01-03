@@ -24,12 +24,23 @@ jobs:
       - name: Install Project Dependencies
         run: |
           npm install  # Install all project dependencies from package.json
+          
+      - name: Show Project Directory for Debugging
+        run: |
+          echo "Current project directory:"
+          pwd
+          echo "Listing files in the current directory:"
+          ls -la  # Show the files and directories in the current repo for debugging
 
       - name: Run HTMLHint on HTML Files
-        run: htmlhint '**/*.html' -v  # Lint all HTML files in the repository with verbose output
+        run: |
+          echo "Running HTMLHint on HTML files..."
+          htmlhint '**/*.html' -v  # Lint all HTML files in the repository with verbose output
 
       - name: Run Stylelint on CSS Files
-        run: stylelint '**/*.css' -v  # Lint all CSS files in the repository with verbose output
+        run: |
+          echo "Running Stylelint on CSS files..."
+          stylelint '**/*.css' -v  # Lint all CSS files in the repository with verbose output
 
   performance:
     runs-on: ubuntu-latest  # Runs the performance job on Ubuntu
