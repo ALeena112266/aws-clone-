@@ -40,7 +40,7 @@ jobs:
       - name: Run Stylelint on CSS Files
         run: |
           echo "Running Stylelint on CSS files..."
-          stylelint 'css/**/*.css' -v  # Lint all CSS files in the 'css' folder with verbose output
+          stylelint 'css/**/*.css' -v  # Lint all CSS files inside the 'css' folder
 
   performance:
     runs-on: ubuntu-latest  # Runs the performance job on Ubuntu
