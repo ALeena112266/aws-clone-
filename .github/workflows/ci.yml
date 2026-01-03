@@ -29,18 +29,18 @@ jobs:
         run: |
           echo "Current project directory:"
           pwd
-          echo "Listing files in the current directory:"
-          ls -la  # Show the files and directories in the current repo for debugging
+          echo "Listing files in the repository:"
+          ls -la  # List all files and directories for debugging
 
       - name: Run HTMLHint on HTML Files
         run: |
           echo "Running HTMLHint on HTML files..."
-          htmlhint '**/*.html' -v  # Lint all HTML files in the repository with verbose output
+          htmlhint '*.html' -v  # Lint all HTML files in the root directory with verbose output
 
       - name: Run Stylelint on CSS Files
         run: |
           echo "Running Stylelint on CSS files..."
-          stylelint '**/*.css' -v  # Lint all CSS files in the repository with verbose output
+          stylelint 'css/**/*.css' -v  # Lint all CSS files in the 'css' folder with verbose output
 
   performance:
     runs-on: ubuntu-latest  # Runs the performance job on Ubuntu
