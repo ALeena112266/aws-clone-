@@ -13,30 +13,36 @@ jobs:
     runs-on: ubuntu-latest  # GitHub Actions runner for Ubuntu
     
     steps:
+      # Step 1: Checkout code from the repository
       - name: Checkout Code
         uses: actions/checkout@v2  # Checkout repository code
-        
+
+      # Step 2: Set up Node.js environment
       - name: Set Up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Set up Node.js version 16 for the workflow
+          node-version: '16'  # Use Node.js version 16
 
+      # Step 3: Install all project dependencies from package.json
       - name: Install Project Dependencies
         run: |
-          npm install  # Install all project dependencies from package.json
-          
+          npm install  # Install dependencies, including htmlhint and stylelint
+
+      # Step 4: Show project directory for debugging
       - name: Show Project Directory for Debugging
         run: |
           echo "Current project directory:"
           pwd
           echo "Listing files in the repository:"
-          ls -la  # List all files and directories for debugging
+          ls -la  # List all files and directories to confirm the paths
 
+      # Step 5: Run HTMLHint on all HTML files in the root directory
       - name: Run HTMLHint on HTML Files
         run: |
           echo "Running HTMLHint on HTML files..."
-          htmlhint '*.html' -v  # Lint all HTML files in the root directory with verbose output
+          htmlhint '*.html' -v  # Lint all HTML files with verbose output
 
+      # Step 6: Run Stylelint on all CSS files in the 'css' folder
       - name: Run Stylelint on CSS Files
         run: |
           echo "Running Stylelint on CSS files..."
@@ -46,23 +52,28 @@ jobs:
     runs-on: ubuntu-latest  # Runs the performance job on Ubuntu
     
     steps:
+      # Step 7: Checkout code
       - name: Checkout Code
         uses: actions/checkout@v2  # Checkout repository code
 
+      # Step 8: Set up Node.js environment for Lighthouse CI
       - name: Set Up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Set up Node.js version 16 for Lighthouse CI
+          node-version: '16'  # Use Node.js version 16 for Lighthouse CI
 
+      # Step 9: Install Lighthouse CI globally
       - name: Install Lighthouse CI
         run: |
           npm install -g @lhci/cli  # Install Lighthouse CI tool globally
 
-      - name: Wait for Deployment to be Ready (Optional)
+      # Step 10: Wait for the website to be deployed (optional)
+      - name: Wait for Deployment to be Ready
         run: |
           echo "Waiting for deployment to be fully ready..."
           sleep 30  # Wait for 30 seconds to ensure the website is fully deployed
 
+      # Step 11: Run Lighthouse performance tests
       - name: Run Lighthouse Performance Tests
         run: |
           lhci autorun --url=https://your-deployment-url.com || exit 0  # Replace with your live/staging site URL
