@@ -50,7 +50,7 @@ jobs:
       - name: Run HTMLHint on HTML Files
         run: |
           echo "Running HTMLHint on HTML files..."
-          htmlhint '*.html' --verbose  # Corrected: Lint all HTML files with verbose output
+          htmlhint '*.html'  # Run htmlhint without verbosity flag
 
       - name: Run Stylelint on CSS Files
         run: |
