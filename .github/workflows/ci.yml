@@ -32,20 +32,10 @@ jobs:
           echo "Listing files in the repository:"
           ls -la  # List all files and directories for debugging
 
-      - name: Check HTML Files for Linting
-        run: |
-          echo "Checking HTML files..."
-          ls -la '*.html'  # List HTML files to ensure they are in the correct location
-
       - name: Run HTMLHint on HTML Files
         run: |
           echo "Running HTMLHint on HTML files..."
           htmlhint '*.html' -v  # Lint all HTML files in the root directory with verbose output
-
-      - name: Check CSS Files for Linting
-        run: |
-          echo "Checking CSS files..."
-          ls -la css/*.css  # List CSS files in the 'css' folder
 
       - name: Run Stylelint on CSS Files
         run: |
